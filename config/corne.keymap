@@ -65,13 +65,33 @@
 
         num_layer {
             bindings = <
-&kp TAB         &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_PLUS      &kp KP_MINUS   &kp KP_CLEAR
-&kp LEFT_SHIFT  &trans        &trans        &trans        &trans        &trans          &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_MULTIPLY  &kp KP_DIVIDE  &trans
+&kp TAB         &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_PLUS      &kp KP_MINUS   &kp BACKSPACE
+&kp LEFT_SHIFT  &trans        &trans        &trans        &trans        &trans          &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_MULTIPLY  &kp KP_DIVIDE  &kp KP_CLEAR
 &kp LCTRL       &trans        &trans        &trans        &trans        &bt BT_CLR      &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_DOT       &kp KP_EQUAL   &kp KP_NUMLOCK
                                             &kp LGUI      &trans        &kp SPACE       &kp RET    &kp KP_N0  &kp RALT
             >;
 
             label = "Number";
+        };
+
+        Functions {
+            bindings = <
+&kp F1     &kp F2        &kp F3  &kp F4  &kp F5  &kp F6    &kp F7           &kp F8  &kp F9  &kp F10  &kp F11       &kp F12
+&kp ESC    &trans        &trans  &trans  &trans  &trans    &kp PRINTSCREEN  &trans  &trans  &trans   &trans        &trans
+&kp RCTRL  &kp LEFT_ALT  &trans  &trans  &trans  &trans    &trans           &trans  &trans  &trans   &kp LEFT_ALT  &kp LCTRL
+                                 &trans  &trans  &trans    &trans           &trans  &trans
+            >;
+
+            label = "Functions";
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        Function_keys {
+            if-layers = <1 2>;
+            then-layer = <4>;
         };
     };
 };
